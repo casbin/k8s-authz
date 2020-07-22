@@ -1,11 +1,8 @@
 package main
+import "fmt"
+import c"k8s-authz/connect"
 
-import (
-	"fmt"
-	"work/client"
-)
-
-func main() {
-	fmt.Print("hello go")
-	client.Connect()
+func main(){
+	fmt.Print("hello ")
+	c.Echo()
 }
