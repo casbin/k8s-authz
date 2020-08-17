@@ -2,14 +2,24 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="c14fef15-9414-4b59-8a26-fc2eebdab6be" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/examples/create-update-delete-deployment/main.go" beforeDir="false" afterPath="$PROJECT_DIR$/examples/create-update-delete-deployment/main.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/go.mod" beforeDir="false" afterPath="$PROJECT_DIR$/go.mod" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/casbin_server/casbin_server.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/main.go" beforeDir="false" afterPath="$PROJECT_DIR$/main.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/基于 Kubernetes 构建云原生分布式访问控制应用-严灏-中期报告.md" beforeDir="false" afterPath="$PROJECT_DIR$/基于 Kubernetes 构建云原生分布式访问控制应用-严灏-中期报告.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="HTTP Request" />
+        <option value="Go File" />
+      </list>
+    </option>
   </component>
   <component name="GOROOT" path="C:\Go" />
   <component name="Git.Settings">
@@ -24,6 +34,7 @@
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
+    <property name="DefaultGoTemplateProperty" value="Go File" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="go.import.settings.migrated" value="true" />
@@ -31,7 +42,16 @@
     <property name="go.tried.to.enable.integration.vgo.integrator" value="true" />
     <property name="last_opened_file_path" value="$USER_HOME$" />
   </component>
-  <component name="RunManager" selected="Go Test.main_test.go">
+  <component name="RunManager" selected="Go Build.go build k8s-authz">
+    <configuration name="go build k8s-authz" type="GoApplicationRunConfiguration" factoryName="Go Application" temporary="true" nameIsGenerated="true">
+      <module name="k8s-authz" />
+      <working_directory value="$PROJECT_DIR$" />
+      <kind value="PACKAGE" />
+      <filePath value="$PROJECT_DIR$/main.go" />
+      <package value="k8s-authz" />
+      <directory value="$PROJECT_DIR$" />
+      <method v="2" />
+    </configuration>
     <configuration name="go build main.go" type="GoApplicationRunConfiguration" factoryName="Go Application" temporary="true" nameIsGenerated="true">
       <module name="k8s-authz" />
       <working_directory value="$PROJECT_DIR$" />
@@ -53,8 +73,9 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Go Test.main_test.go" />
+        <item itemvalue="Go Build.go build k8s-authz" />
         <item itemvalue="Go Build.go build main.go" />
+        <item itemvalue="Go Test.main_test.go" />
       </list>
     </recent_temporary>
   </component>
@@ -66,21 +87,37 @@
     <integration-enabled>true</integration-enabled>
   </component>
   <component name="WindowStateProjectService">
-    <state width="1877" height="282" key="GridCell.Tab.0.bottom" timestamp="1597458205180">
+    <state width="1877" height="348" key="GridCell.Tab.0.bottom" timestamp="1597637801342">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="282" key="GridCell.Tab.0.bottom/-1920.281.1280.693/0.0.1920.1040@0.0.1920.1040" timestamp="1597458205180" />
-    <state width="1877" height="282" key="GridCell.Tab.0.center" timestamp="1597458205180">
+    <state width="1877" height="348" key="GridCell.Tab.0.bottom/-1920.281.1280.693/0.0.1920.1040@0.0.1920.1040" timestamp="1597637801342" />
+    <state width="1877" height="348" key="GridCell.Tab.0.center" timestamp="1597637801342">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="282" key="GridCell.Tab.0.center/-1920.281.1280.693/0.0.1920.1040@0.0.1920.1040" timestamp="1597458205180" />
-    <state width="1877" height="282" key="GridCell.Tab.0.left" timestamp="1597458205180">
+    <state width="1877" height="348" key="GridCell.Tab.0.center/-1920.281.1280.693/0.0.1920.1040@0.0.1920.1040" timestamp="1597637801342" />
+    <state width="1877" height="348" key="GridCell.Tab.0.left" timestamp="1597637801342">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="282" key="GridCell.Tab.0.left/-1920.281.1280.693/0.0.1920.1040@0.0.1920.1040" timestamp="1597458205180" />
-    <state width="1877" height="282" key="GridCell.Tab.0.right" timestamp="1597458205180">
+    <state width="1877" height="348" key="GridCell.Tab.0.left/-1920.281.1280.693/0.0.1920.1040@0.0.1920.1040" timestamp="1597637801342" />
+    <state width="1877" height="348" key="GridCell.Tab.0.right" timestamp="1597637801342">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="282" key="GridCell.Tab.0.right/-1920.281.1280.693/0.0.1920.1040@0.0.1920.1040" timestamp="1597458205180" />
+    <state width="1877" height="348" key="GridCell.Tab.0.right/-1920.281.1280.693/0.0.1920.1040@0.0.1920.1040" timestamp="1597637801342" />
+    <state width="1877" height="348" key="GridCell.Tab.1.bottom" timestamp="1597637801343">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1877" height="348" key="GridCell.Tab.1.bottom/-1920.281.1280.693/0.0.1920.1040@0.0.1920.1040" timestamp="1597637801343" />
+    <state width="1877" height="348" key="GridCell.Tab.1.center" timestamp="1597637801343">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1877" height="348" key="GridCell.Tab.1.center/-1920.281.1280.693/0.0.1920.1040@0.0.1920.1040" timestamp="1597637801343" />
+    <state width="1877" height="348" key="GridCell.Tab.1.left" timestamp="1597637801342">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1877" height="348" key="GridCell.Tab.1.left/-1920.281.1280.693/0.0.1920.1040@0.0.1920.1040" timestamp="1597637801342" />
+    <state width="1877" height="348" key="GridCell.Tab.1.right" timestamp="1597637801343">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1877" height="348" key="GridCell.Tab.1.right/-1920.281.1280.693/0.0.1920.1040@0.0.1920.1040" timestamp="1597637801343" />
   </component>
 </project>
