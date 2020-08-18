@@ -3,6 +3,7 @@ module k8s-authz
 go 1.14
 
 require (
+	github.com/casbin/casbin v1.9.1 // indirect
 	github.com/golang/protobuf v1.4.2
 	github.com/imdario/mergo v0.3.11 // indirect
 	golang.org/x/net v0.0.0-20200813134508-3edf25e44fcc // indirect

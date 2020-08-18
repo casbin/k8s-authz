@@ -18,21 +18,6 @@ func (d db)list (w http.ResponseWriter,r *http.Request){
 	for k,v :=range d{
 				fmt.Fprintf(w,"%v %v\n",k,v)
 	}
-	//url:=r.URL.Path
-	//switch url {
-	//case "/price":
-	//	for k,v :=range d{
-	//		fmt.Fprintf(w,"%v %v\n",k,v)
-	//	}
-	//case "/list":
-	//	for k,_ :=range d{
-	//		fmt.Fprintf(w,"%v \n",k)
-	//	}
-	//case "/casbin":
-	//	fmt.Fprintf(w,"HELLO CASBIN")
-	//default:
-	//	w.WriteHeader(http.StatusNoContent)
-	//}
 }
 
 func (d db)price (w http.ResponseWriter,r * http.Request){

@@ -2,12 +2,15 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="c14fef15-9414-4b59-8a26-fc2eebdab6be" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/hello/client/main.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/hello/server/main.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/example/main2.go" beforeDir="false" afterPath="$PROJECT_DIR$/main2.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/go.mod" beforeDir="false" afterPath="$PROJECT_DIR$/go.mod" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/go.sum" beforeDir="false" afterPath="$PROJECT_DIR$/go.sum" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/httpServe.go" beforeDir="false" afterPath="$PROJECT_DIR$/httpServe.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.go" beforeDir="false" afterPath="$PROJECT_DIR$/main.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/model/auth_model.conf" beforeDir="false" afterPath="$PROJECT_DIR$/model/auth_model.conf" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/model/user.go" beforeDir="false" afterPath="$PROJECT_DIR$/model/user.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/policy/policy.csv" beforeDir="false" afterPath="$PROJECT_DIR$/policy/policy.csv" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -42,6 +45,14 @@
     <property name="go.sdk.automatically.set" value="true" />
     <property name="go.tried.to.enable.integration.vgo.integrator" value="true" />
     <property name="last_opened_file_path" value="$USER_HOME$" />
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\DELL\Desktop\k8s-authz\" />
+      <recent name="C:\Users\DELL\Desktop\k8s-authz\example" />
+      <recent name="C:\Users\DELL\Desktop\k8s-authz\policy" />
+      <recent name="C:\Users\DELL\Desktop\k8s-authz\model" />
+    </key>
   </component>
   <component name="RunManager" selected="Go Build.go build k8s-authz">
     <configuration name="go build k8s-authz" type="GoApplicationRunConfiguration" factoryName="Go Application" temporary="true" nameIsGenerated="true">
@@ -83,6 +94,9 @@
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="UnknownFeatures">
+    <option featureType="com.intellij.fileTypeFactory" implementationName="*.conf" />
   </component>
   <component name="VgoProject">
     <integration-enabled>true</integration-enabled>
