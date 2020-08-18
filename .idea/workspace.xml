@@ -2,8 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="c14fef15-9414-4b59-8a26-fc2eebdab6be" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/main.go" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/基于 Kubernetes 构建云原生分布式访问控制应用-严灏-中期报告.md" beforeDir="false" />
+      <change afterPath="$PROJECT_DIR$/hello/client/main.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/hello/server/main.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/go.mod" beforeDir="false" afterPath="$PROJECT_DIR$/go.mod" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/go.sum" beforeDir="false" afterPath="$PROJECT_DIR$/go.sum" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main.go" beforeDir="false" afterPath="$PROJECT_DIR$/main.go" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -84,6 +88,10 @@
     <integration-enabled>true</integration-enabled>
   </component>
   <component name="WindowStateProjectService">
+    <state x="373" y="141" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1597729371872">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state x="373" y="141" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1280.680@0.0.1280.680" timestamp="1597729371872" />
     <state width="1877" height="348" key="GridCell.Tab.0.bottom" timestamp="1597637801342">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
