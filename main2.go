@@ -1,5 +1,4 @@
 package main
-
 import (
 	"fmt"
 	"github.com/casbin/casbin"
@@ -53,12 +52,8 @@ func acl(w http.ResponseWriter , r * http.Request)  {
 	}else{
 		fmt.Fprintf(w,"验证失败")
 	}
-
-
-
 }
 func main()  {
-
 	mux:=http.NewServeMux()
 	mux.HandleFunc("/auth",auth)
 	mux.HandleFunc("/acl",acl)

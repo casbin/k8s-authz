@@ -1,16 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="c14fef15-9414-4b59-8a26-fc2eebdab6be" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/model/acl_model.conf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/model/restful_model.conf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/policy/acl_policy.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/policy/restful_policy.csv" afterDir="false" />
+    <list default="true" id="c14fef15-9414-4b59-8a26-fc2eebdab6be" name="Default Changelist" comment="1">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main.go" beforeDir="false" afterPath="$PROJECT_DIR$/main.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main2.go" beforeDir="false" afterPath="$PROJECT_DIR$/main2.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/model/user.go" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/policy/policy.csv" beforeDir="false" afterPath="$PROJECT_DIR$/policy/auth_policy.csv" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -39,6 +32,7 @@
   </component>
   <component name="PropertiesComponent">
     <property name="DefaultGoTemplateProperty" value="Go File" />
+    <property name="GO_FMT" value="true" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="go.import.settings.migrated" value="true" />
@@ -98,6 +92,10 @@
   <component name="UnknownFeatures">
     <option featureType="com.intellij.fileTypeFactory" implementationName="*.conf" />
   </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="1" />
+    <option name="LAST_COMMIT_MESSAGE" value="1" />
+  </component>
   <component name="VgoProject">
     <integration-enabled>true</integration-enabled>
   </component>
@@ -106,6 +104,10 @@
       <screen x="0" y="0" width="1280" height="680" />
     </state>
     <state x="373" y="141" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1280.680@0.0.1280.680" timestamp="1597798850184" />
+    <state x="244" y="0" key="CommitChangelistDialog2" timestamp="1597800315713">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state x="244" y="0" key="CommitChangelistDialog2/0.0.1280.680@0.0.1280.680" timestamp="1597800315713" />
     <state width="1877" height="348" key="GridCell.Tab.0.bottom" timestamp="1597637801342">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
