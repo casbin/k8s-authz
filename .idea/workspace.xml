@@ -2,15 +2,15 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="c14fef15-9414-4b59-8a26-fc2eebdab6be" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/model/acl_model.conf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/model/restful_model.conf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/policy/acl_policy.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/policy/restful_policy.csv" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/example/main2.go" beforeDir="false" afterPath="$PROJECT_DIR$/main2.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/go.mod" beforeDir="false" afterPath="$PROJECT_DIR$/go.mod" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/go.sum" beforeDir="false" afterPath="$PROJECT_DIR$/go.sum" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/httpServe.go" beforeDir="false" afterPath="$PROJECT_DIR$/httpServe.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.go" beforeDir="false" afterPath="$PROJECT_DIR$/main.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/model/auth_model.conf" beforeDir="false" afterPath="$PROJECT_DIR$/model/auth_model.conf" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/model/user.go" beforeDir="false" afterPath="$PROJECT_DIR$/model/user.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/policy/policy.csv" beforeDir="false" afterPath="$PROJECT_DIR$/policy/policy.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main2.go" beforeDir="false" afterPath="$PROJECT_DIR$/main2.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/model/user.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/policy/policy.csv" beforeDir="false" afterPath="$PROJECT_DIR$/policy/auth_policy.csv" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -102,10 +102,10 @@
     <integration-enabled>true</integration-enabled>
   </component>
   <component name="WindowStateProjectService">
-    <state x="373" y="141" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1597729371872">
+    <state x="373" y="141" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1597798850184">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state x="373" y="141" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1280.680@0.0.1280.680" timestamp="1597729371872" />
+    <state x="373" y="141" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1280.680@0.0.1280.680" timestamp="1597798850184" />
     <state width="1877" height="348" key="GridCell.Tab.0.bottom" timestamp="1597637801342">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>

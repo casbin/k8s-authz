@@ -72,7 +72,7 @@ func createUsers() model.Users {
 }
 func main() {
 	// setup casbin auth rules
-	authEnforcer, err := casbin.NewEnforcerSafe("./auth_model.conf", "./policy.csv")
+	authEnforcer, err := casbin.NewEnforcerSafe("./auth_model.conf", "./auth_policy.csv")
 	if err != nil {
 		log.Fatal(err)
 	}
