@@ -3,44 +3,75 @@ package main
 import (
 	"fmt"
 	"math/rand"
-	"runtime"
 )
-
-func product(done chan struct{}) chan int {
-	ch:=make(chan int)
-
+//带缓冲, 并发 ,退出通知机制的生成器
+func GenerateIntA(done chan struct{}) chan int {
+	ch:=make(chan int,10)
 	go func() {
-		Label:for{
-				select {
-					case ch<-rand.Int():
+		Label:
+		for{
+			select {
+			case ch<- rand.Int():
+			case <-done:
+				break Label
 
-					case <-done:
-						break Label
-
-				}
-
+			}
 		}
 		close(ch)
+
 	}()
 	return ch
+}
+func GenerateIntB(done chan struct{}) chan int {
+	ch:=make(chan int,10)
+	go func() {
+	Label:
+		for{
+			select {
+			case ch<- rand.Int():
+			case <-done:
+				break Label
 
+			}
+		}
+		close(ch)
+
+	}()
+	return ch
+}
+
+func GenerateInt(done chan struct{})chan int {
+	ch:=make(chan  int ,20)
+	notify:=make(chan struct{})
+	go func() {
+		Label:
+			for {
+				select {
+				case ch <- <-GenerateIntA(notify):
+				case ch <- <-GenerateIntB(notify):
+				case <-done:
+					notify <- struct{}{}
+					notify <- struct{}{}
+					break Label
+
+
+				}
+			}
+		close(ch)
+	}()
+	
+	return  ch
 }
 func main()  {
 	done:=make(chan struct{})
-	ch:=product(done)
 
-	fmt.Print(<-ch,"\n")
+	ch:=GenerateInt(done)
 
-	fmt.Print(<-ch,"\n")
+	for i:=1;i<20;i++{
+		fmt.Print(<-ch,"\n")
+	}
+	done<- struct{}{}
 
-	fmt.Print(<-ch,"\n")
-
-	close(done)
-	fmt.Print(<-ch,"\n")
-
-	fmt.Print(<-ch,"\n")
-
-	fmt.Print(<-ch,"\n")
-	fmt.Print(runtime.GOMAXPROCS(0))
+	fmt.Print("stop generate")
 
 }
