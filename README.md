@@ -26,3 +26,27 @@
 
 
 
+
+
+#### 先决条件
+
+确保 Kubernetes 集群版本至少为 v1.16（以便使用 `admissionregistration.k8s.io/v1` API） 或者 v1.9 （以便使用 `admissionregistration.k8s.io/v1beta1` API）
+
+使用本条命令
+
+```
+kubectl api-versions | grep admissionregistration.k8s.io
+```
+
+结果应该是
+
+```
+admissionregistration.k8s.io/v1
+admissionregistration.k8s.io/v1beta1
+```
+
+
+
+#### 测试环境
+
+kubernetes 1.16.7
