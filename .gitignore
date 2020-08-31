@@ -1,3 +1,7 @@
+httpGet.go
+httpServe.go
+
+
 # Binaries for programs and plugins
 *.exe
 *.exe~
