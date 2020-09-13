@@ -2,9 +2,47 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="c14fef15-9414-4b59-8a26-fc2eebdab6be" name="Default Changelist" comment="1">
-      <change afterPath="$PROJECT_DIR$/mian.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/webhook/webhook.go" beforeDir="false" afterPath="$PROJECT_DIR$/webhook/webhook.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/connect/connect.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/connect/decode.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/demo/calico-3.13.1" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/demo/kubeadm-config.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/demo/nginx-demo.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/demo/nginx-service.demo.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/examples/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/examples/config" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/examples/create-update-delete-deployment/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/examples/create-update-delete-deployment/main.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/examples/dynamic-create-update-delete-deployment/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/examples/dynamic-create-update-delete-deployment/main.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/examples/fake-client/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/examples/fake-client/doc.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/examples/fake-client/main_test.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/examples/in-cluster-client-configuration/Dockerfile" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/examples/in-cluster-client-configuration/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/examples/in-cluster-client-configuration/main.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/examples/leader-election/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/examples/leader-election/main.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/examples/out-of-cluster-client-configuration/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/examples/out-of-cluster-client-configuration/main.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/examples/workqueue/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/examples/workqueue/main.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/go.mod" beforeDir="false" afterPath="$PROJECT_DIR$/go.mod" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/go.sum" beforeDir="false" afterPath="$PROJECT_DIR$/go.sum" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hello/client/main.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/hello/server/main.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/httpGet.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/httpServe.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/itface/interface.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/main.go" beforeDir="false" afterPath="$PROJECT_DIR$/main.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main2.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/main3.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/main4.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mian.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/proto/hello/hello.pb.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/proto/hello/hello.proto" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/webhook/webhook.go" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -49,12 +87,30 @@
       <recent name="C:\Users\DELL\Desktop\k8s-authz\model" />
     </key>
   </component>
-  <component name="RunManager" selected="Go Build.go build k8s-authz">
+  <component name="RunManager" selected="Go Build.go build main3.go">
     <configuration name="go build k8s-authz" type="GoApplicationRunConfiguration" factoryName="Go Application" temporary="true" nameIsGenerated="true">
       <module name="k8s-authz" />
       <working_directory value="$PROJECT_DIR$" />
       <kind value="PACKAGE" />
       <filePath value="$PROJECT_DIR$/main.go" />
+      <package value="k8s-authz" />
+      <directory value="$PROJECT_DIR$" />
+      <method v="2" />
+    </configuration>
+    <configuration name="go build main2.go" type="GoApplicationRunConfiguration" factoryName="Go Application" temporary="true" nameIsGenerated="true">
+      <module name="k8s-authz" />
+      <working_directory value="$PROJECT_DIR$" />
+      <kind value="FILE" />
+      <filePath value="$PROJECT_DIR$/main2.go" />
+      <package value="k8s-authz" />
+      <directory value="$PROJECT_DIR$" />
+      <method v="2" />
+    </configuration>
+    <configuration name="go build main3.go" type="GoApplicationRunConfiguration" factoryName="Go Application" temporary="true" nameIsGenerated="true">
+      <module name="k8s-authz" />
+      <working_directory value="$PROJECT_DIR$" />
+      <kind value="FILE" />
+      <filePath value="$PROJECT_DIR$/main3.go" />
       <package value="k8s-authz" />
       <directory value="$PROJECT_DIR$" />
       <method v="2" />
@@ -80,8 +136,10 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Go Build.go build k8s-authz" />
+        <item itemvalue="Go Build.go build main3.go" />
+        <item itemvalue="Go Build.go build main2.go" />
         <item itemvalue="Go Build.go build main.go" />
+        <item itemvalue="Go Build.go build k8s-authz" />
         <item itemvalue="Go Test.main_test.go" />
       </list>
     </recent_temporary>
@@ -109,22 +167,30 @@
       <screen x="0" y="0" width="1280" height="680" />
     </state>
     <state x="244" y="0" key="CommitChangelistDialog2/0.0.1280.680@0.0.1280.680" timestamp="1597800315713" />
-    <state width="1877" height="348" key="GridCell.Tab.0.bottom" timestamp="1597637801342">
-      <screen x="0" y="0" width="1920" height="1040" />
+    <state x="500" y="86" key="EnvironmentVariablesDialog" timestamp="1599478384184">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state x="500" y="86" key="EnvironmentVariablesDialog/0.0.1280.680@0.0.1280.680" timestamp="1599478384184" />
+    <state width="1237" height="163" key="GridCell.Tab.0.bottom" timestamp="1599478663734">
+      <screen x="0" y="0" width="1280" height="680" />
     </state>
     <state width="1877" height="348" key="GridCell.Tab.0.bottom/-1920.281.1280.693/0.0.1920.1040@0.0.1920.1040" timestamp="1597637801342" />
-    <state width="1877" height="348" key="GridCell.Tab.0.center" timestamp="1597637801342">
-      <screen x="0" y="0" width="1920" height="1040" />
+    <state width="1237" height="163" key="GridCell.Tab.0.bottom/0.0.1280.680@0.0.1280.680" timestamp="1599478663734" />
+    <state width="1237" height="163" key="GridCell.Tab.0.center" timestamp="1599478663734">
+      <screen x="0" y="0" width="1280" height="680" />
     </state>
     <state width="1877" height="348" key="GridCell.Tab.0.center/-1920.281.1280.693/0.0.1920.1040@0.0.1920.1040" timestamp="1597637801342" />
-    <state width="1877" height="348" key="GridCell.Tab.0.left" timestamp="1597637801342">
-      <screen x="0" y="0" width="1920" height="1040" />
+    <state width="1237" height="163" key="GridCell.Tab.0.center/0.0.1280.680@0.0.1280.680" timestamp="1599478663734" />
+    <state width="1237" height="163" key="GridCell.Tab.0.left" timestamp="1599478663734">
+      <screen x="0" y="0" width="1280" height="680" />
     </state>
     <state width="1877" height="348" key="GridCell.Tab.0.left/-1920.281.1280.693/0.0.1920.1040@0.0.1920.1040" timestamp="1597637801342" />
-    <state width="1877" height="348" key="GridCell.Tab.0.right" timestamp="1597637801342">
-      <screen x="0" y="0" width="1920" height="1040" />
+    <state width="1237" height="163" key="GridCell.Tab.0.left/0.0.1280.680@0.0.1280.680" timestamp="1599478663734" />
+    <state width="1237" height="163" key="GridCell.Tab.0.right" timestamp="1599478663734">
+      <screen x="0" y="0" width="1280" height="680" />
     </state>
     <state width="1877" height="348" key="GridCell.Tab.0.right/-1920.281.1280.693/0.0.1920.1040@0.0.1920.1040" timestamp="1597637801342" />
+    <state width="1237" height="163" key="GridCell.Tab.0.right/0.0.1280.680@0.0.1280.680" timestamp="1599478663734" />
     <state width="1877" height="348" key="GridCell.Tab.1.bottom" timestamp="1597637801343">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -145,16 +211,5 @@
       <screen x="0" y="0" width="1280" height="680" />
     </state>
     <state x="303" y="1" key="search.everywhere.popup/0.0.1280.680@0.0.1280.680" timestamp="1598081806877" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="DlvLineBreakpoint">
-          <url>file://$PROJECT_DIR$/main2.go</url>
-          <line>42</line>
-          <option name="timeStamp" value="1" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
   </component>
 </project>
