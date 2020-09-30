@@ -236,3 +236,9 @@ webhook.go Is the main permission access logic
   ```
 
   
+  
+  Reference
+  
+  https://banzaicloud.com/blog/k8s-admission-webhooks/
+  
+  https://kubernetes.io/docs/reference/access-authn-authz/admission-controllers/#what-are-they
