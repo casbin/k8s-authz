@@ -2,47 +2,13 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="c14fef15-9414-4b59-8a26-fc2eebdab6be" name="Default Changelist" comment="1">
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/connect/connect.go" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/connect/decode.go" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/demo/calico-3.13.1" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/demo/kubeadm-config.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/demo/nginx-demo.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/demo/nginx-service.demo.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/examples/README.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/examples/config" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/examples/create-update-delete-deployment/README.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/examples/create-update-delete-deployment/main.go" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/examples/dynamic-create-update-delete-deployment/README.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/examples/dynamic-create-update-delete-deployment/main.go" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/examples/fake-client/README.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/examples/fake-client/doc.go" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/examples/fake-client/main_test.go" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/examples/in-cluster-client-configuration/Dockerfile" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/examples/in-cluster-client-configuration/README.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/examples/in-cluster-client-configuration/main.go" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/examples/leader-election/README.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/examples/leader-election/main.go" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/examples/out-of-cluster-client-configuration/README.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/examples/out-of-cluster-client-configuration/main.go" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/examples/workqueue/README.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/examples/workqueue/main.go" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/go.mod" beforeDir="false" afterPath="$PROJECT_DIR$/go.mod" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/go.sum" beforeDir="false" afterPath="$PROJECT_DIR$/go.sum" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/hello/client/main.go" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/hello/server/main.go" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/httpGet.go" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/httpServe.go" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/itface/interface.go" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/main.go" beforeDir="false" afterPath="$PROJECT_DIR$/main.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main2.go" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/main3.go" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/main4.go" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/mian.go" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/proto/hello/hello.pb.go" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/proto/hello/hello.proto" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webhook/webhook.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/casbin_server/casbin_server.go" beforeDir="false" afterPath="$PROJECT_DIR$/casbin_server/casbin_server.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/k8s-authz.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/model/auth_model.conf" beforeDir="false" afterPath="$PROJECT_DIR$/model/auth_model.conf" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/policy/acl_policy.csv" beforeDir="false" afterPath="$PROJECT_DIR$/policy/acl_policy.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/policy/auth_policy.csv" beforeDir="false" afterPath="$PROJECT_DIR$/policy/auth_policy.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/webhook.go" beforeDir="false" afterPath="$PROJECT_DIR$/webhook.go" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -207,9 +173,10 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state width="1877" height="348" key="GridCell.Tab.1.right/-1920.281.1280.693/0.0.1920.1040@0.0.1920.1040" timestamp="1597637801343" />
-    <state x="303" y="1" key="search.everywhere.popup" timestamp="1598081806877">
-      <screen x="0" y="0" width="1280" height="680" />
+    <state x="455" y="2" width="672" height="678" key="search.everywhere.popup" timestamp="1601438364480">
+      <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="303" y="1" key="search.everywhere.popup/0.0.1280.680@0.0.1280.680" timestamp="1598081806877" />
+    <state x="455" y="2" width="672" height="678" key="search.everywhere.popup/0.1080.1280.693/0.0.1920.1040@0.0.1920.1040" timestamp="1601438364480" />
   </component>
 </project>

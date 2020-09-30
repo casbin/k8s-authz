@@ -5,6 +5,7 @@ import (
 	"fmt"
 	"io/ioutil"
 	"net/http"
+	"strconv"
 	"strings"
 
 	"github.com/golang/glog"
@@ -16,6 +17,7 @@ import (
 	"k8s.io/apimachinery/pkg/runtime"
 	"k8s.io/apimachinery/pkg/runtime/serializer"
 	"k8s.io/kubernetes/pkg/apis/core/v1"
+	_"k8s-authz/casbin_server"
 )
 
 var (
@@ -233,8 +235,16 @@ func (whsvr *WebhookServer) validate(ar *v1beta1.AdmissionReview) *v1beta1.Admis
 	var result *metav1.Status
 	glog.Info("available labels:", availableLabels)
 	glog.Info("required labels", requiredLabels)
+/*
+	availableLabels                 map[string]string
+   // (scope and select) objects. May match selectors of replication controllers
+   	// and services.
+   	// More info: http://kubernetes.io/docs/user-guide/labels
+   	// +optional
+*/
+
 	for _, rl := range requiredLabels {
-		if _, ok := availableLabels[rl]; !ok {
+		if res := authEnforcer.Enforce("root", rl, "someaction"); !res {
 			allowed = false
 			result = &metav1.Status{
 				Reason: "required labels are not set",
