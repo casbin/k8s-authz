@@ -1,3 +1,4 @@
+//This file uses caspin_ server/casbin_server  Global variable AuthEnforcer
 package main
 
 import (
@@ -17,7 +18,7 @@ import (
 	"k8s.io/apimachinery/pkg/runtime"
 	"k8s.io/apimachinery/pkg/runtime/serializer"
 	"k8s.io/kubernetes/pkg/apis/core/v1"
-	_"k8s-authz/casbin_server"
+	casbin "k8s-authz/casbin_server"
 )
 
 var (
@@ -242,9 +243,9 @@ func (whsvr *WebhookServer) validate(ar *v1beta1.AdmissionReview) *v1beta1.Admis
    	// More info: http://kubernetes.io/docs/user-guide/labels
    	// +optional
 */
-
+	//Calling caspin here does not conform to the permission control policy
 	for _, rl := range requiredLabels {
-		if res := authEnforcer.Enforce("root", rl, "someaction"); !res {
+		if res := casbin.AuthEnforcer.Enforce("root", rl, "someaction"); !res {
 			allowed = false
 			result = &metav1.Status{
 				Reason: "required labels are not set",

@@ -3,11 +3,8 @@
   <component name="ChangeListManager">
     <list default="true" id="c14fef15-9414-4b59-8a26-fc2eebdab6be" name="Default Changelist" comment="1">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/casbin_encap.go" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/casbin_server/casbin_server.go" beforeDir="false" afterPath="$PROJECT_DIR$/casbin_server/casbin_server.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/k8s-authz.go" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/model/auth_model.conf" beforeDir="false" afterPath="$PROJECT_DIR$/model/auth_model.conf" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/policy/acl_policy.csv" beforeDir="false" afterPath="$PROJECT_DIR$/policy/acl_policy.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/policy/auth_policy.csv" beforeDir="false" afterPath="$PROJECT_DIR$/policy/auth_policy.csv" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/webhook.go" beforeDir="false" afterPath="$PROJECT_DIR$/webhook.go" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
