@@ -1,0 +1,49 @@
+apiVersion: apps/v1beta1
+kind: Deployment
+metadata:
+  name: casbin
+  namespace: default
+  labels:
+    name: casbin
+spec:
+  replicas: 1
+  template:
+    metadata:
+      name: casbin
+      labels:
+        name: casbin
+    spec:
+      containers:
+        - name: webhook
+          image: casbin/docker:1.0.0
+          imagePullPolicy: Always
+          volumeMounts:
+            - name: webhook-certs
+              mountPath: /etc/certs
+              readOnly: true
+            - name: logs
+              mountPath: /tmp
+          securityContext:
+            readOnlyRootFilesystem: true
+      volumes:
+        - name: webhook-certs
+          secret:
+            secretName: casbin
+        - name: logs
+          emptyDir: {}
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: casbin
+  namespace: default
+  labels:
+    name: casbin
+spec:
+  ports:
+  - name: webhook
+    port: 443
+    targetPort: 8080
+  selector:
+    name: casbin 
+---
