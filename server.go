@@ -7,7 +7,7 @@ import (
 	"net/http"
 
 	"github.com/golang/glog"
-	"k8s.io/api/admission/v1beta1"
+	"k8s.io/api/admission/v1"
 	"k8s.io/api/core/v1"
 	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 	"github.com/casbin/casbin/v2"
@@ -36,31 +36,39 @@ func (gs *CasbinServerHandler) serve(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	arRequest := v1beta1.AdmissionReview{}
+	arRequest := v1.AdmissionReview{}
 	if err := json.Unmarshal(body, &arRequest); err != nil {
 		glog.Error("incorrect body")
 		http.Error(w, "incorrect body", http.StatusBadRequest)
 	}
 
 	raw := arRequest.Request.Object.Raw
-	pod := v1.Pod{}
-	if err := json.Unmarshal(raw, &pod); err != nil {
-		glog.Error("error deserializing pod")
+	user := arRequest.userInfo.username
+	operation_name := arRequest.operation
+
+	if err := json.Unmarshal(raw, &user); err != nil {
+		glog.Error("error deserializing User name")
 		return
 	}
-	allowed, err := e.Enforce(request)
-	if (err != nil){
-		panic(err)
-			}
-	if allowed {
-	response := v1beta1.AdmissionReview{
-		Response: &v1beta1.AdmissionResponse{
+	if err := json.Unmarshal(raw, &operation_name); err != nil {
+		glog.Error("error deserializing Operation name")
+		return
+	}
+	
+	e, err := casbin.NewEnforcer("./example/model.conf", "./example/policy.csv")
+	if err != nil {
+		glog.Errorf("Filed to load the policies: %v", err)
+	}
+
+	if e.HasPermissionForUser(user, []string{operation_name}) = true {
+	response := v1.AdmissionReview{
+		Response: &v1.AdmissionResponse{
 			Allowed: true,
 		},
 		}
 	}
-	response := v1beta1.AdmissionReview{
-		Response: &v1beta1.AdmissionResponse{
+	response := v1.AdmissionReview{
+		Response: &v1.AdmissionResponse{
 		  Allowed: false,
 		  Result: &metav1.Status{
 			Message: " You are not authorized to perform any operations on these pods!",
