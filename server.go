@@ -58,6 +58,7 @@ func (gs *CasbinServerHandler) serve(w http.ResponseWriter, r *http.Request) {
 	e, err := casbin.NewEnforcer("./example/model.conf", "./example/policy.csv")
 	if err != nil {
 		glog.Errorf("Filed to load the policies: %v", err)
+		return
 	}
 
 	if e.HasPermissionForUser(user, []string{operation_name}) = true {
