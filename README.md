@@ -45,7 +45,7 @@ Now the server should be running and ready to validate the requests for the oper
 
 ## Documentation
 
-https://casbin.org/docs/en/middlewares 
+You can check the official [docs](https://casbin.org/docs/en/k8s) for more detailed explaination.
 
 ## Community
 
