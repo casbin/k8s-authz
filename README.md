@@ -4,7 +4,7 @@
 [![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
 
 <p align="center">
-    <img width="300" height="300" src="images/k8s-logo.png" alt="K8s-authz" />
+    <img width="300" height="300" src="k8s-logo.png" alt="K8s-authz" />
 </p>
    
 K8s-authz is authorization middleware for [Kubernetes](https://github.com/kubernetes/kubernetes), which is based on [Casbin](https://github.com/casbin/casbin). 
@@ -45,7 +45,7 @@ Now the server should be running and ready to validate the requests for the oper
 
 ## Documentation
 
-https://casbin.org/docs/en/middlewares 
+You can check the official [docs](https://casbin.org/docs/en/k8s) for more detailed explaination.
 
 ## Community
 
