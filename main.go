@@ -36,7 +36,8 @@ func main() {
 		TLSConfig: &tls.Config{Certificates: []tls.Certificate{certs}},
 	}
 	//cs = CasbinServerHandler{}
-	mux.HandleFunc("/validate", (*CasbinServerHandler).serve)
+	router := mux.NewRouter()
+	router.HandleFunc("/validate", (*CasbinServerHandler).serve)
 	server.ListenAndServeTLS("", "")
 
 	go func() {
