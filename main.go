@@ -5,11 +5,12 @@ import (
 	"crypto/tls"
 	"flag"
 	"fmt"
+	"github.com/golang/glog"
 	"net/http"
 	"os"
 	"os/signal"
 	"syscall"
-	"github.com/golang/glog"
+	"github.com/gorilla/mux"
 )
 
 const (
@@ -31,11 +32,11 @@ func main() {
 		glog.Errorf("Filed to load key pair: %v", err)
 	}
 	server := &http.Server{
-		Addr:  fmt.Sprintf(":%v", port),
+		Addr:      fmt.Sprintf(":%v", port),
 		TLSConfig: &tls.Config{Certificates: []tls.Certificate{certs}},
-	  }
-	cs = CasbinServerHandler{}
-	mux.HandleFunc("/validate", cs.serve)
+	}
+	//cs = CasbinServerHandler{}
+	mux.HandleFunc("/validate", (*CasbinServerHandler).serve)
 	server.ListenAndServeTLS("", "")
 
 	go func() {
@@ -46,7 +47,6 @@ func main() {
 
 	glog.Infof("Server running listening in port: ", port)
 
-
 	signalChan := make(chan os.Signal, 1)
 	signal.Notify(signalChan, syscall.SIGINT, syscall.SIGTERM)
 	<-signalChan
@@ -54,5 +54,3 @@ func main() {
 	glog.Info("Shutting down webhook server...")
 	server.Shutdown(context.Background())
 }
-}
-	
