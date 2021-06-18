@@ -6,15 +6,18 @@ import (
 	"io/ioutil"
 	"net/http"
 
+	"github.com/casbin/casbin/v2"
 	"github.com/golang/glog"
 	"k8s.io/api/admission/v1"
-	"k8s.io/api/core/v1"
 	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
-	"github.com/casbin/casbin/v2"
 )
 
 type CasbinServerHandler struct {
 }
+
+var (
+	operation_name string
+)
 
 func (gs *CasbinServerHandler) serve(w http.ResponseWriter, r *http.Request) {
 	var body []byte
@@ -29,22 +32,19 @@ func (gs *CasbinServerHandler) serve(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 	glog.Info("Received request")
-
 	if r.URL.Path != "/validate" {
 		glog.Error("no validate")
 		http.Error(w, "no validate", http.StatusBadRequest)
 		return
 	}
-
-	arRequest := v1.AdmissionReview{}
+	arRequest := v1.AdmissionRequest{}
 	if err := json.Unmarshal(body, &arRequest); err != nil {
 		glog.Error("incorrect body")
 		http.Error(w, "incorrect body", http.StatusBadRequest)
 	}
-
-	raw := arRequest.Request.Object.Raw
-	user := arRequest.userInfo.username
-	operation_name := arRequest.operation
+	raw := v1.AdmissionReview{}.Request.Object.Raw
+	json.Unmarshal([]byte(arRequest.Operation), &operation_name)
+	user := arRequest.UserInfo.Username
 
 	if err := json.Unmarshal(raw, &user); err != nil {
 		glog.Error("error deserializing User name")
@@ -54,35 +54,32 @@ func (gs *CasbinServerHandler) serve(w http.ResponseWriter, r *http.Request) {
 		glog.Error("error deserializing Operation name")
 		return
 	}
-	
 	e, err := casbin.NewEnforcer("./example/model.conf", "./example/policy.csv")
 	if err != nil {
 		glog.Errorf("Filed to load the policies: %v", err)
 		return
 	}
-
-	if e.HasPermissionForUser(user, []string{operation_name}) = true {
-	response := v1.AdmissionReview{
-		Response: &v1.AdmissionResponse{
-			Allowed: true,
-		},
+	if e.HasPermissionForUser(user, operation_name) == true {
+		response := v1.AdmissionReview{
+			Response: &v1.AdmissionResponse{
+				Allowed: true,
+			},
 		}
 	}
 	response := v1.AdmissionReview{
 		Response: &v1.AdmissionResponse{
-		  Allowed: false,
-		  Result: &metav1.Status{
-			Message: " You are not authorized to perform any operations on these pods!",
-		  },
+			Allowed: false,
+			Result: &metav1.Status{
+				Message: " You are not authorized to perform any operations on these pods!",
+			},
 		},
-	  }
-
+	}
 	resp, err := json.Marshal(response)
 	if err != nil {
 		glog.Errorf("Can't encode response: %v", err)
 		http.Error(w, fmt.Sprintf("could not encode response: %v", err), http.StatusInternalServerError)
 	}
-	glog.Infof("Ready to write reponse ...")
+	glog.Infof("Ready to write response ...")
 	if _, err := w.Write(resp); err != nil {
 		glog.Errorf("Can't write response: %v", err)
 		http.Error(w, fmt.Sprintf("could not write response: %v", err), http.StatusInternalServerError)

@@ -1,18 +1,19 @@
-package server
+package main
 
 import (
 	"encoding/json"
 	"github.com/sirupsen/logrus"
 	"io"
 	"io/ioutil"
+	"k8s.io/api/admission/v1beta1"
 	"k8s.io/apimachinery/pkg/apis/meta/v1"
 	"k8s.io/apimachinery/pkg/runtime"
 	"net/http"
 	"net/http/httptest"
 	"strings"
 	"testing"
-	"k8s.io/api/admission/v1beta1"
 )
+
 var (
 	AdmissionRequestNS = v1beta1.AdmissionReview{
 		TypeMeta: v1.TypeMeta{

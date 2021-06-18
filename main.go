@@ -9,7 +9,9 @@ import (
 	"os"
 	"os/signal"
 	"syscall"
+
 	"github.com/golang/glog"
+	"github.com/gorilla/mux"
 )
 
 const (
@@ -23,7 +25,6 @@ var (
 func main() {
 	flag.StringVar(&tlscert, "tlsCertFile", "certs/ca.crt", "File containing the x509 Certificate for HTTPS.")
 	flag.StringVar(&tlskey, "tlsKeyFile", "certs/ca.key", "File containing the x509 private key to --tlsCertFile.")
-
 	flag.Parse()
 
 	certs, err := tls.LoadX509KeyPair(tlscert, tlskey)
@@ -31,11 +32,12 @@ func main() {
 		glog.Errorf("Filed to load key pair: %v", err)
 	}
 	server := &http.Server{
-		Addr:  fmt.Sprintf(":%v", port),
+		Addr:      fmt.Sprintf(":%v", port),
 		TLSConfig: &tls.Config{Certificates: []tls.Certificate{certs}},
-	  }
-	cs = CasbinServerHandler{}
-	mux.HandleFunc("/validate", cs.serve)
+	}
+	//cs = CasbinServerHandler{}
+	router := mux.NewRouter()
+	router.HandleFunc("/validate", (*CasbinServerHandler).serve)
 	server.ListenAndServeTLS("", "")
 
 	go func() {
@@ -45,14 +47,9 @@ func main() {
 	}()
 
 	glog.Infof("Server running listening in port: ", port)
-
-
 	signalChan := make(chan os.Signal, 1)
 	signal.Notify(signalChan, syscall.SIGINT, syscall.SIGTERM)
 	<-signalChan
-
 	glog.Info("Shutting down webhook server...")
 	server.Shutdown(context.Background())
 }
-}
-	
