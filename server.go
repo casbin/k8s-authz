@@ -6,15 +6,15 @@ import (
 	"io/ioutil"
 	"net/http"
 
+	"github.com/casbin/casbin/v2"
 	"github.com/golang/glog"
 	"k8s.io/api/admission/v1"
-	//  corev1 "k8s.io/api/core/v1"
-	"github.com/casbin/casbin/v2"
 	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 )
 
 type CasbinServerHandler struct {
 }
+
 var (
 	operation_name string
 )
@@ -32,23 +32,19 @@ func (gs *CasbinServerHandler) serve(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 	glog.Info("Received request")
-
 	if r.URL.Path != "/validate" {
 		glog.Error("no validate")
 		http.Error(w, "no validate", http.StatusBadRequest)
 		return
 	}
-	
-	arRequest := v1.AdmissionRequest{} 
+	arRequest := v1.AdmissionRequest{}
 	if err := json.Unmarshal(body, &arRequest); err != nil {
 		glog.Error("incorrect body")
 		http.Error(w, "incorrect body", http.StatusBadRequest)
 	}
-
 	raw := v1.AdmissionReview{}.Request.Object.Raw
 	json.Unmarshal([]byte(arRequest.Operation), &operation_name)
 	user := arRequest.UserInfo.Username
-	//operation_name := arRequest.Operation
 
 	if err := json.Unmarshal(raw, &user); err != nil {
 		glog.Error("error deserializing User name")
@@ -58,13 +54,11 @@ func (gs *CasbinServerHandler) serve(w http.ResponseWriter, r *http.Request) {
 		glog.Error("error deserializing Operation name")
 		return
 	}
-
 	e, err := casbin.NewEnforcer("./example/model.conf", "./example/policy.csv")
 	if err != nil {
 		glog.Errorf("Filed to load the policies: %v", err)
 		return
 	}
-
 	if e.HasPermissionForUser(user, operation_name) == true {
 		response := v1.AdmissionReview{
 			Response: &v1.AdmissionResponse{
@@ -80,7 +74,6 @@ func (gs *CasbinServerHandler) serve(w http.ResponseWriter, r *http.Request) {
 			},
 		},
 	}
-
 	resp, err := json.Marshal(response)
 	if err != nil {
 		glog.Errorf("Can't encode response: %v", err)
