@@ -19,7 +19,7 @@ var (
 	operation_name string
 )
 
-func (gs *CasbinServerHandler) serve(w http.ResponseWriter, r *http.Request) {
+func (cs *CasbinServerHandler) serve(w http.ResponseWriter, r *http.Request) {
 	var body []byte
 	if r.Body != nil {
 		if data, err := ioutil.ReadAll(r.Body); err == nil {
@@ -59,22 +59,35 @@ func (gs *CasbinServerHandler) serve(w http.ResponseWriter, r *http.Request) {
 		glog.Errorf("Filed to load the policies: %v", err)
 		return
 	}
-	if e.HasPermissionForUser(user, operation_name) == true {
-		response := v1.AdmissionReview{
+	/*	if e.HasPermissionForUser(user, operation_name) == true {
+		aresponse := v1.AdmissionReview{
 			Response: &v1.AdmissionResponse{
 				Allowed: true,
 			},
 		}
+		return }
+	*/
+	arReview := v1.AdmissionReview{}
+	arReview.Response = &v1.AdmissionResponse{
+		UID:     arReview.Request.UID,
+		Allowed: true,
 	}
-	response := v1.AdmissionReview{
-		Response: &v1.AdmissionResponse{
-			Allowed: false,
-			Result: &metav1.Status{
-				Message: " You are not authorized to perform any operations on these pods!",
-			},
-		},
+
+	if e.HasPermissionForUser(user, operation_name) != true {
+		arReview.Response.Allowed = false
+		arReview.Response.Result = &metav1.Status{
+			Message: " You are not authorized to perform any operations on these pods!",
+		}
+		/*		aresponse := v1.AdmissionReview{
+				Response: &v1.AdmissionResponse{
+					Allowed: false,
+					Result: &metav1.Status{
+						Message: " You are not authorized to perform any operations on these pods!",
+					},
+				},
+			}*/
 	}
-	resp, err := json.Marshal(response)
+	resp, err := json.Marshal(arReview)
 	if err != nil {
 		glog.Errorf("Can't encode response: %v", err)
 		http.Error(w, fmt.Sprintf("could not encode response: %v", err), http.StatusInternalServerError)

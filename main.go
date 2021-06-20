@@ -35,9 +35,9 @@ func main() {
 		Addr:      fmt.Sprintf(":%v", port),
 		TLSConfig: &tls.Config{Certificates: []tls.Certificate{certs}},
 	}
-	//cs = CasbinServerHandler{}
+	cs := CasbinServerHandler{}
 	router := mux.NewRouter()
-	router.HandleFunc("/validate", (*CasbinServerHandler).serve)
+	router.HandleFunc("/validate", cs.serve)
 	server.ListenAndServeTLS("", "")
 
 	go func() {
