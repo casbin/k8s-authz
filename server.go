@@ -43,7 +43,11 @@ func (cs *CasbinServerHandler) serve(w http.ResponseWriter, r *http.Request) {
 		http.Error(w, "incorrect body", http.StatusBadRequest)
 	}
 	raw := v1.AdmissionReview{}.Request.Object.Raw
-	json.Unmarshal([]byte(arRequest.Operation), &operation_name)
+
+	if err := json.Unmarshal([]byte(arRequest.Operation), &operation_name); err != nil {
+		glog.Error("incorrect body")
+		http.Error(w, "incorrect body", http.StatusBadRequest)
+	}
 	user := arRequest.UserInfo.Username
 
 	if err := json.Unmarshal(raw, &user); err != nil {
@@ -73,7 +77,7 @@ func (cs *CasbinServerHandler) serve(w http.ResponseWriter, r *http.Request) {
 		Allowed: true,
 	}
 
-	if e.HasPermissionForUser(user, operation_name) != true {
+	if !e.HasPermissionForUser(user, operation_name) {
 		arReview.Response.Allowed = false
 		arReview.Response.Result = &metav1.Status{
 			Message: " You are not authorized to perform any operations on these pods!",
@@ -92,7 +96,7 @@ func (cs *CasbinServerHandler) serve(w http.ResponseWriter, r *http.Request) {
 		glog.Errorf("Can't encode response: %v", err)
 		http.Error(w, fmt.Sprintf("could not encode response: %v", err), http.StatusInternalServerError)
 	}
-	glog.Infof("Ready to write response ...")
+	glog.Info("Ready to write response ...")
 	if _, err := w.Write(resp); err != nil {
 		glog.Errorf("Can't write response: %v", err)
 		http.Error(w, fmt.Sprintf("could not write response: %v", err), http.StatusInternalServerError)

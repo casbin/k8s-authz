@@ -38,18 +38,23 @@ func main() {
 	cs := CasbinServerHandler{}
 	router := mux.NewRouter()
 	router.HandleFunc("/validate", cs.serve)
-	server.ListenAndServeTLS("", "")
 
+	if err := server.ListenAndServeTLS("", ""); err != nil {
+		glog.Error("Server error", err)
+	}
 	go func() {
 		if err := server.ListenAndServeTLS("", ""); err != nil {
 			glog.Errorf("Failed to listen and serve webhook server: %v", err)
 		}
 	}()
 
-	glog.Infof("Server running listening in port: ", port)
+	glog.Info("Server running listening in port: ", port)
 	signalChan := make(chan os.Signal, 1)
 	signal.Notify(signalChan, syscall.SIGINT, syscall.SIGTERM)
 	<-signalChan
 	glog.Info("Shutting down webhook server...")
-	server.Shutdown(context.Background())
+	if err := server.Shutdown(context.Background()); err != nil {
+		glog.Error("Unable to shutdown the server", err)
+	}
+
 }
