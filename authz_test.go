@@ -15,7 +15,6 @@ import (
 	"net/http/httptest"
 )
 
-var user = "test_user"
 
 //var test_operation = "CREATE"
 
@@ -184,7 +183,7 @@ func TestPolicy(t *testing.T) {
 
 
 
-func TestvalidationHandler(t *testing.T) {
+func TestValidationHandler(t *testing.T) {
 	cs := CasbinServerHandler{}
 	r, err := http.NewRequest("GET", "/validate", nil)
 	if err != nil {
