@@ -4,10 +4,10 @@ import (
 	"testing"
 	//"encoding/json"
 
-	"k8s.io/api/admission/v1"
+//	"k8s.io/api/admission/v1"
 	//metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 	//"k8s.io/apimachinery/pkg/runtime"
-	"github.com/casbin/casbin/v2"
+//	"github.com/casbin/casbin/v2"
 	//	authenticationv1 "k8s.io/api/authentication/v1"
 	// "github.com/casbin/k8s-authz/server"
 	// "github.com/gorilla/mux"
@@ -44,10 +44,7 @@ var user = "test_user"
 )
 */
 
-//func TestServerResponse(){
-//declare variable AdmissionResponse and then decode it to match the UID to check/compare the response
-//}
-
+/*
 func TestPolicy(t *testing.T) {
 	//declare variable name of user and operation and then enforce it with casbin to check the policy verifications
 	e, err := casbin.NewEnforcer("./example/model.conf", "./example/policy.csv")
@@ -181,24 +178,11 @@ func TestPolicy(t *testing.T) {
 	//	response := cs.serve(w,r)
 	resp.UserInfo.Username = user
 	handler := http.HandlerFunc(cs.serve)
-	handler.ServeHTTP(resp, ar)
-	/*
-	   1. load policies by adding the user with role/operation
-	   2. Create a admissionrequest var and then run it with function serve
-	   3. Then check its admision review response after that and then if arReview.Response.Allowed is true/false
-	*/
-
+	handler.ServeHTTP([]byte(resp), ar)
 }
-
-/*
-func TestManifest{
-//dry run k8s manifest
-}
-
-// after these 3 tests run 	go test -coverprofile=coverage.out
-// go tool cover -html=coverage.out
-// to clearly see which lines are or are not covered by your test.
 */
+
+
 
 func TestvalidationHandler(t *testing.T) {
 	cs := CasbinServerHandler{}
