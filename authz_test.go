@@ -4,15 +4,19 @@ import (
 	"testing"
 	//"encoding/json"
 
-	//"k8s.io/api/admission/v1"
+	"k8s.io/api/admission/v1"
 	//metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 	//"k8s.io/apimachinery/pkg/runtime"
 	"github.com/casbin/casbin/v2"
-//	authenticationv1 "k8s.io/api/authentication/v1"
-   // "github.com/casbin/k8s-authz/server"
+	//	authenticationv1 "k8s.io/api/authentication/v1"
+	// "github.com/casbin/k8s-authz/server"
+	// "github.com/gorilla/mux"
+	"net/http"
+	"net/http/httptest"
 )
 
 var user = "test_user"
+
 //var test_operation = "CREATE"
 
 /*var (
@@ -21,7 +25,7 @@ var user = "test_user"
 			Kind: "AdmissionReview",
 		},
 		Request: &v1.AdmissionRequest{
-			UID: "e911857d-c318-11e8-bbad-025000000001",			
+			UID: "e911857d-c318-11e8-bbad-025000000001",
 			Operation: "CREATE",
 			Object: runtime.RawExtension{
 				Raw: []byte(`{"metadata": {
@@ -31,21 +35,21 @@ var user = "test_user"
       						}}`),
 			},
 			UserInfo: {
-				
+
 				"username": "test_user",
-								
+
 			},
 		},
 	}
-)	
+)
 */
 
 //func TestServerResponse(){
 //declare variable AdmissionResponse and then decode it to match the UID to check/compare the response
 //}
 
-func TestPolicy(t *testing.T){
-//declare variable name of user and operation and then enforce it with casbin to check the policy verifications
+func TestPolicy(t *testing.T) {
+	//declare variable name of user and operation and then enforce it with casbin to check the policy verifications
 	e, err := casbin.NewEnforcer("./example/model.conf", "./example/policy.csv")
 	e.AddPermissionForUser("test_user", "CREATE")
 	cs := CasbinServerHandler{}
@@ -165,22 +169,50 @@ func TestPolicy(t *testing.T){
 			}
 		}
 	}`
+	ar := v1.AdmissionReview{
+		Request: &v1.AdmissionRequest{
+			Operation: "NONEXISTENT",
+		},
+	}
+	resp := v1.AdmissionRequest{}
 
-	response := cs.serve(w.Write(rawJSON))
-
-/* 
-1. load policies by adding the user with role/operation
-2. Create a admissionrequest var and then run it with function serve
-3. Then check its admision review response after that and then if arReview.Response.Allowed is true/false
-*/
+	//	r := v1beta1.AdmissionReview{}
+	//	w := rawJSON
+	//	response := cs.serve(w,r)
+	resp.UserInfo.Username = user
+	handler := http.HandlerFunc(cs.serve)
+	handler.ServeHTTP(resp, ar)
+	/*
+	   1. load policies by adding the user with role/operation
+	   2. Create a admissionrequest var and then run it with function serve
+	   3. Then check its admision review response after that and then if arReview.Response.Allowed is true/false
+	*/
 
 }
+
 /*
 func TestManifest{
-//dry run k8s manifest	
+//dry run k8s manifest
 }
 
-// after these 3 tests run 	go test -coverprofile=coverage.out 
+// after these 3 tests run 	go test -coverprofile=coverage.out
 // go tool cover -html=coverage.out
 // to clearly see which lines are or are not covered by your test.
 */
+
+func TestvalidationHandler(t *testing.T) {
+	cs := CasbinServerHandler{}
+	r, err := http.NewRequest("GET", "/validate", nil)
+	if err != nil {
+		t.Fatal(err)
+	}
+	w := httptest.NewRecorder()
+	handler := http.HandlerFunc(cs.serve)
+	handler.ServeHTTP(w, r)
+
+	resp := w.Result()
+
+	if resp.StatusCode != http.StatusOK {
+		t.Errorf("Unexpected status code %d", resp.StatusCode)
+	}
+}
