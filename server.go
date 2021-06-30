@@ -63,14 +63,7 @@ func (cs *CasbinServerHandler) serve(w http.ResponseWriter, r *http.Request) {
 		glog.Errorf("Filed to load the policies: %v", err)
 		return
 	}
-	/*	if e.HasPermissionForUser(user, operation_name) == true {
-		aresponse := v1.AdmissionReview{
-			Response: &v1.AdmissionResponse{
-				Allowed: true,
-			},
-		}
-		return }
-	*/
+	
 	arReview := v1.AdmissionReview{}
 	arReview.Response = &v1.AdmissionResponse{
 		UID:     arReview.Request.UID,
@@ -82,14 +75,7 @@ func (cs *CasbinServerHandler) serve(w http.ResponseWriter, r *http.Request) {
 		arReview.Response.Result = &metav1.Status{
 			Message: " You are not authorized to perform any operations on these pods!",
 		}
-		/*		aresponse := v1.AdmissionReview{
-				Response: &v1.AdmissionResponse{
-					Allowed: false,
-					Result: &metav1.Status{
-						Message: " You are not authorized to perform any operations on these pods!",
-					},
-				},
-			}*/
+		
 	}
 	resp, err := json.Marshal(arReview)
 	if err != nil {
