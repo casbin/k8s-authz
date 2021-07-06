@@ -2,7 +2,7 @@
 [![Contributions Welcome](https://img.shields.io/badge/contributions-welcome-brightgreen.svg?style=flat)](https://github.com/casbin/k8s-authz/issues)
 [![Go Report Card](https://goreportcard.com/badge/github.com/casbin/k8s-authz)](https://goreportcard.com/report/github.com/casbin/k8s-authz)
 [![Coverage Status](https://coveralls.io/repos/github/casbin/k8s-authz/badge.svg?branch=master)](https://coveralls.io/github/casbin/k8s-authz?branch=master)
-[![CI](https://github.com/casbin/k8s-authz/workflows/CI/badge.svg)](https://github.com/casbin/k8s-authz/actions?query=workflow%3CI)
+[![Go](https://github.com/casbin/k8s-authz/actions/workflows/ci.yaml/badge.svg)](https://github.com/casbin/k8s-authz/actions/workflows/ci.yaml)
 [![Gitter](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/casbin/lobby)
 [![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
 

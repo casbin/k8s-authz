@@ -19,7 +19,7 @@ var (
 	operation_name string
 )
 
-func (gs *CasbinServerHandler) serve(w http.ResponseWriter, r *http.Request) {
+func (cs *CasbinServerHandler) serve(w http.ResponseWriter, r *http.Request) {
 	var body []byte
 	if r.Body != nil {
 		if data, err := ioutil.ReadAll(r.Body); err == nil {
@@ -43,7 +43,11 @@ func (gs *CasbinServerHandler) serve(w http.ResponseWriter, r *http.Request) {
 		http.Error(w, "incorrect body", http.StatusBadRequest)
 	}
 	raw := v1.AdmissionReview{}.Request.Object.Raw
-	json.Unmarshal([]byte(arRequest.Operation), &operation_name)
+
+	if err := json.Unmarshal([]byte(arRequest.Operation), &operation_name); err != nil {
+		glog.Error("incorrect body")
+		http.Error(w, "incorrect body", http.StatusBadRequest)
+	}
 	user := arRequest.UserInfo.Username
 
 	if err := json.Unmarshal(raw, &user); err != nil {
@@ -59,27 +63,26 @@ func (gs *CasbinServerHandler) serve(w http.ResponseWriter, r *http.Request) {
 		glog.Errorf("Filed to load the policies: %v", err)
 		return
 	}
-	if e.HasPermissionForUser(user, operation_name) == true {
-		response := v1.AdmissionReview{
-			Response: &v1.AdmissionResponse{
-				Allowed: true,
-			},
+	
+	arReview := v1.AdmissionReview{}
+	arReview.Response = &v1.AdmissionResponse{
+		UID:     arReview.Request.UID,
+		Allowed: true,
+	}
+
+	if !e.HasPermissionForUser(user, operation_name) {
+		arReview.Response.Allowed = false
+		arReview.Response.Result = &metav1.Status{
+			Message: " You are not authorized to perform any operations on these pods!",
 		}
+		
 	}
-	response := v1.AdmissionReview{
-		Response: &v1.AdmissionResponse{
-			Allowed: false,
-			Result: &metav1.Status{
-				Message: " You are not authorized to perform any operations on these pods!",
-			},
-		},
-	}
-	resp, err := json.Marshal(response)
+	resp, err := json.Marshal(arReview)
 	if err != nil {
 		glog.Errorf("Can't encode response: %v", err)
 		http.Error(w, fmt.Sprintf("could not encode response: %v", err), http.StatusInternalServerError)
 	}
-	glog.Infof("Ready to write response ...")
+	glog.Info("Ready to write response ...")
 	if _, err := w.Write(resp); err != nil {
 		glog.Errorf("Can't write response: %v", err)
 		http.Error(w, fmt.Sprintf("could not write response: %v", err), http.StatusInternalServerError)
