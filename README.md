@@ -44,6 +44,14 @@ Before proceeding, make sure to have the following-
 ```
 kubectl apply -f deployment.yaml
 ```
+- For a production server, we need to create a k8s `secret` to place the certificates for security purposes. 
+```
+kubectl create secret generic casbin -n default \
+  --from-file=key.pem=certs/casbin-key.pem \
+  --from-file=cert.pem=certs/casbin-crt.pem
+```
+- Once, this part is done we need to change the directory of the certs in [main.go](https://github.com/ashish493/k8s-authz/blob/3560551427c0431a9d4594ad1206f084ede37c49/main.go#L26) and then in [manifests](https://github.com/ashish493/k8s-authz/blob/3560551427c0431a9d4594ad1206f084ede37c49/manifests/deployment.yaml#L22) with that of the `secret`.
+
 Now the server should be running and ready to validate the requests for the operations on the pods. 
 
 ## Documentation
