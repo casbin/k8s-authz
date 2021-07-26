@@ -24,13 +24,8 @@ jobs:
     runs-on: 'ubuntu-latest'
     needs: lint
      steps:
-      - name: Set up Go
-        uses: actions/setup-go@v2
-        with:
-          go-version: 1.16
 
       - uses: actions/checkout@v2
-      - name: Run Unit tests
         run: go test -v -coverprofile=covprofile ./...
 
       - name: Install goveralls
@@ -42,7 +37,7 @@ jobs:
         env:
           COVERALLS_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: goveralls -coverprofile=covprofile -service=github
-        
+
   build:
       runs-on: ubuntu-latest
       steps:
