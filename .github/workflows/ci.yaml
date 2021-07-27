@@ -19,38 +19,39 @@ jobs:
         uses: golangci/golangci-lint-action@v2
         with:
           version: latest
-    test:
-      runs-on: ubuntu-latest
+    
+  test:
+    runs-on: ubuntu-latest
 
-      steps:
-        - name: Set up Go
-          uses: actions/setup-go@v2
-          with:
-            go-version: 1.16
+    steps:
+      - name: Set up Go
+        uses: actions/setup-go@v2
+        with:
+          go-version: 1.16
 
-        - uses: actions/checkout@v2
-        - name: Run Unit tests
-          run: go test -v -coverprofile=covprofile ./...
+      - uses: actions/checkout@v2
+      - name: Run Unit tests
+        run: go test -v -coverprofile=covprofile ./...
 
-        - name: Install goveralls
-          env:
-            GO111MODULE: off
-          run: go get github.com/mattn/goveralls
+      - name: Install goveralls
+        env:
+          GO111MODULE: off
+        run: go get github.com/mattn/goveralls
 
-        - name: Send coverage
-          env:
-            COVERALLS_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          run: goveralls -coverprofile=covprofile -service=github
+      - name: Send coverage
+        env:
+          COVERALLS_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: goveralls -coverprofile=covprofile -service=github
 
   build:
-      runs-on: ubuntu-latest
-      steps:
+    runs-on: ubuntu-latest
+    steps:
       - uses: actions/checkout@v2
 
       - name: Set up Go
         uses: actions/setup-go@v2
-        with:
-          go-version: 1.16  
+      with:
+        go-version: 1.16  
 
   semantic-release:
     needs: [test]
