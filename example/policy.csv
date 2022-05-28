@@ -1,0 +1,2 @@
+p, "nginx:1.13.1",allow
+p, "nginx:1.14.1",deny
