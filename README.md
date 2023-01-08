@@ -37,7 +37,7 @@ Before proceeding, make sure to have the following-
 ```
  docker build -t casbin/k8s_authz:0.1 .
 ```
-- Define the casbin policies in the [model.conf](https://github.com/casbin/k8s-authz/blob/master/config/model.conf) and [policy.csv](https://github.com/casbin/k8s-authz/blob/master/config/policy.csv). You can refer the [docs](https://casbin.org/docs/en/how-it-works) to get to know more about the working of these policies.
+- Define the casbin policies in the [model.conf](https://github.com/casbin/k8s-authz/blob/master/config/model.conf) and [policy.csv](https://github.com/casbin/k8s-authz/blob/master/config/policy.csv). You can refer the [docs](https://casbin.org/docs/how-it-works) to get to know more about the working of these policies.
 
 - Before deploying, you can change the ports in [main.go](https://github.com/casbin/k8s-authz/blob/master/main.go) and also in the validation webhook configuration [file](https://github.com/casbin/k8s-authz/blob/master/manifests/deployment.yaml) depending on your usage.
 - Deploy the validation controller and the webhook on k8s cluster by running:-
@@ -56,7 +56,7 @@ Now the server should be running and ready to validate the requests for the oper
 
 ## Documentation
 
-You can check the official [docs](https://casbin.org/docs/en/k8s) for more detailed explaination.
+You can check the official [docs](https://casbin.org/docs/k8s) for more detailed explaination.
 
 ## Community
 
