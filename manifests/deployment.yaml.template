@@ -55,7 +55,7 @@ kind: ValidatingWebhookConfiguration
 metadata:
   name: casbin
 webhooks:
-  - name: casin.casbin.org
+  - name: webhook.casbin.org
     clientConfig:
       service:
         name: server
