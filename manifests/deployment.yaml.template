@@ -58,7 +58,7 @@ webhooks:
   - name: webhook.casbin.org
     clientConfig:
       service:
-        name: server
+        name: casbin
         namespace: default
         path: "/validate"
       caBundle: "${CA_BUNDLE}"
