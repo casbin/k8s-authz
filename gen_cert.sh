@@ -13,6 +13,3 @@ openssl genrsa -out certs/casbin-key.pem 2048
 openssl req -new -key certs/casbin-key.pem -subj "/CN=casbin.default.svc" -out casbin.csr 
 
 openssl x509 -req -in casbin.csr -CA certs/ca.crt -CAkey certs/ca.key -CAcreateserial -out certs/casbin-crt.pem
-
-export CA_BUNDLE=$(cat certs/ca.crt | base64 | tr -d '\n')
-cat deployment.yaml | envsubst > deployment.yaml 
