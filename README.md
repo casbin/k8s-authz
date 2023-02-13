@@ -29,38 +29,59 @@ Before proceeding, make sure to have the following-
 
 ## Configuration and Usage
  
-- Generate the certificates and keys for every user by using openssl and running the following script:-
-```
-./gen_cert.sh
-```
-- Export environment variable `CA_BUNDLE`
-```
-export CA_BUNDLE=$(cat certs/ca.crt | base64 | tr -d '\n')
-```
-- Use `envsubst` to pass environment variables to `deployment.yaml.template`, generating `deployment.yaml`
-```
-cat manifests/deployment.yaml.template | envsubst > manifests/deployment.yaml
-```
+- Generate the certificates and keys for every user by using openssl and running the following script:
 
+  If you are on a Linux system, you can execute shell scripts directly
+    ```
+    ./gen_cert.sh
+    ```
+  If you are on a Windows system, executing `./gen_cert.sh` can be problematic, especially if you are using `Git Bash`
+  Follow the steps below:
+    ```
+  # Do not use Git Bash to execute these commands (You can use cmd)
+  
+    openssl genrsa -out certs/ca.key 2048
+    
+    openssl req -new -x509 -key certs/ca.key -out certs/ca.crt
+    
+    openssl genrsa -out certs/casbin-key.pem 2048
+    
+    openssl req -new -key certs/casbin-key.pem -subj "/CN=casbin.default.svc" -out casbin.csr
+    
+    openssl x509 -req -in casbin.csr -CA certs/ca.crt -CAkey certs/ca.key -CAcreateserial -out certs/casbin-crt.pem
+  
+  # You can use Git Bash to execute the following command, or you can use other equivalent methods
+    
+    export CA_BUNDLE=$(cat certs/ca.crt | base64 | tr -d '\n')
+    
+    cat manifests/ValidatingWebhookConf.yaml.template | envsubst > manifests/ValidatingWebhookConf.yaml
+    ```
 
-- Build the docker image from the [Dockerfile](https://github.com/casbin/k8s-authz/blob/master/Dockerfile) manually by running the following command and then change the build version here and at the deployment [file](https://github.com/casbin/k8s-authz/blob/718f58c46e3dbf79063b5b1c18348c2fee5de9e9/manifests/deployment.yaml#L18), as per the builds. 
-```
-docker build -t casbin/k8s_authz:latest .
-```
+- For a production server, we need to create a k8s `secret` to place the certificates for security purposes.
+    ```
+    kubectl create secret generic authz -n default \
+      --from-file=key.pem=certs/casbin-key.pem \
+      --from-file=cert.pem=certs/casbin-crt.pem
+    ```
+- Once, this part is done we need to change the directory of the certs in [main.go](https://github.com/ashish493/k8s-authz/blob/3560551427c0431a9d4594ad1206f084ede37c49/main.go#L26) and then in [manifests](https://github.com/ashish493/k8s-authz/blob/3560551427c0431a9d4594ad1206f084ede37c49/manifests/deployment.yaml#L22) with that of the `secret`.
+
+- Build the docker image from the [Dockerfile](https://github.com/casbin/k8s-authz/blob/master/Dockerfile) manually by running the following command and then change the build version here and at the deployment [file](https://github.com/casbin/k8s-authz/blob/718f58c46e3dbf79063b5b1c18348c2fee5de9e9/manifests/deployment.yaml#L18), as per the builds.
+    ```
+    docker build -t casbin/k8s_authz:latest .
+    ```
+  
 - Define the casbin policies in the [model.conf](https://github.com/casbin/k8s-authz/blob/master/config/model.conf) and [policy.csv](https://github.com/casbin/k8s-authz/blob/master/config/policy.csv). You can refer the [docs](https://casbin.org/docs/how-it-works) to get to know more about the working of these policies.
 
 - Before deploying, you can change the ports in [main.go](https://github.com/casbin/k8s-authz/blob/master/main.go) and also in the validation webhook configuration [file](https://github.com/casbin/k8s-authz/blob/master/manifests/deployment.yaml) depending on your usage.
-- Deploy the validation controller and the webhook on k8s cluster by running:-
-```
-kubectl apply -f manifests/deployment.yaml
-```
-- For a production server, we need to create a k8s `secret` to place the certificates for security purposes. 
-```
-kubectl create secret generic casbin -n default \
-  --from-file=key.pem=certs/casbin-key.pem \
-  --from-file=cert.pem=certs/casbin-crt.pem
-```
-- Once, this part is done we need to change the directory of the certs in [main.go](https://github.com/ashish493/k8s-authz/blob/3560551427c0431a9d4594ad1206f084ede37c49/main.go#L26) and then in [manifests](https://github.com/ashish493/k8s-authz/blob/3560551427c0431a9d4594ad1206f084ede37c49/manifests/deployment.yaml#L22) with that of the `secret`.
+
+- Deploy the validation controller and the webhook on k8s cluster by running:
+    ```
+    kubectl apply -f manifests/deployment.yaml
+  
+    # Wait for Deployment Ready
+  
+    kubectl apply -f manifests/ValidatingWebhookConf.yaml
+  ```
 
 Now the server should be running and ready to validate the requests for the operations on the pods. 
 
