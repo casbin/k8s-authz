@@ -3,7 +3,7 @@
 [![Go Report Card](https://goreportcard.com/badge/github.com/casbin/k8s-authz)](https://goreportcard.com/report/github.com/casbin/k8s-authz)
 [![Coverage Status](https://coveralls.io/repos/github/casbin/k8s-authz/badge.svg?branch=master)](https://coveralls.io/github/casbin/k8s-authz?branch=master)
 [![Go](https://github.com/casbin/k8s-authz/actions/workflows/ci.yaml/badge.svg)](https://github.com/casbin/k8s-authz/actions/workflows/ci.yaml)
-[![Gitter](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/casbin/lobby)
+[![Discord](https://img.shields.io/discord/1022748306096537660?logo=discord&label=discord&color=5865F2)](https://discord.gg/S5UjpzGZjN)
 [![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
 
 <p align="center">
@@ -91,5 +91,5 @@ You can check the official [docs](https://casbin.org/docs/k8s) for more detailed
 
 ## Community
 
-In case of any query, you can ask on our gitter [channel](https://gitter.im/casbin/lobby).
+In case of any query, you can ask on our [Discord](https://discord.gg/S5UjpzGZjN).
 
