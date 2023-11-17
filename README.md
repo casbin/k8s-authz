@@ -87,7 +87,7 @@ Now the server should be running and ready to validate the requests for the oper
 
 ## Documentation
 
-You can check the official [docs](https://casbin.org/docs/k8s) for more detailed explaination.
+You can check the official [docs](https://casbin.org/docs/k8s) for more detailed explanation.
 
 ## Community
 
