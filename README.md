@@ -6,6 +6,11 @@
 [![Discord](https://img.shields.io/discord/1022748306096537660?logo=discord&label=discord&color=5865F2)](https://discord.gg/S5UjpzGZjN)
 [![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
 
+> [!WARNING]
+> **This project is deprecated and no longer maintained.**
+> 
+> This repository is archived for historical reference. No new features, bug fixes, or security updates will be provided.
+
 <p align="center">
     <img width="300" height="300" src="k8s-logo.png" alt="K8s-authz" />
 </p>
